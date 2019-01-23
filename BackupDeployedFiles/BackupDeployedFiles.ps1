@@ -24,7 +24,7 @@ if($confirmation -eq "y") {
 		Write-Host "----------------------------------------"
    	}
 	else{
-		Write-Host = "Incorrect paths.Process canceled"
+		Write-Host = "Incorrect Path"
 	}
 }
 else{
