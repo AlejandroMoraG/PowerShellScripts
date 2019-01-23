@@ -14,17 +14,17 @@ $counter= 0
 
 if($confirmation -eq "y") {
     # Proceed
-    	if ((Test-Path $deployPath)) {
+    	if ((Test-Path $deployPath) -And (Test-Path $backupPath)) {
 		Get-ChildItem -Path $backupPath -Recurse -Force -File | foreach-object {
-            $object= (Get-ChildItem -Path $backupPath -Force -Recurse -File -Name | Select-Object -index $counter)
-            Copy-Item $deployPath\$object -Destination $backupPath -recurse -Force
-            $counter=($counter+1) }
+            		$object= (Get-ChildItem -Path $backupPath -Force -Recurse -File -Name | Select-Object -index $counter)
+            		Copy-Item $deployPath\$object -Destination $backupPath -recurse -Force
+           		 $counter=($counter+1) }
 		Write-Host "----------------------------------------"
 		Write-Host "$counter copied files"
 		Write-Host "----------------------------------------"
    	}
 	else{
-		Write-Host = "Incorrect Path"
+		Write-Host = "Incorrect Paths.Process canceled"
 	}
 }
 else{
