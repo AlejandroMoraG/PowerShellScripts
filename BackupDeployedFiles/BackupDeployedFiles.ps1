@@ -14,7 +14,7 @@ $counter= 0
 
 if($confirmation -eq "y") {
     # Proceed
-    	if ((Test-Path $deployPath -And Test-Path $backupPath)) {
+    	if ((Test-Path $deployPath)) {
 		Get-ChildItem -Path $backupPath -Recurse -Force -File | foreach-object {
             $object= (Get-ChildItem -Path $backupPath -Force -Recurse -File -Name | Select-Object -index $counter)
             Copy-Item $deployPath\$object -Destination $backupPath -recurse -Force
