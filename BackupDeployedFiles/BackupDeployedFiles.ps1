@@ -1,4 +1,4 @@
-Write-Host "**SCRIPT FOR BACKUP THE DEPLOYED FILES**"
+Write-Host "** SCRIPT FOR BACKUP THE DEPLOYED FILES **"
 
 # input
 $deployPath = Read-Host "Path of deployed files"
@@ -11,18 +11,22 @@ $confirmation= Read-Host "Are you sure you want to proceed (y/n)"
 
 #var
 $counter= 0
+
 if($confirmation -eq "y") {
     # Proceed
-    if ((Test-Path $deployPath)) {
-
-	Get-ChildItem -Path $backupPath -Recurse -Force -File | foreach-object {
-		$object= (Get-ChildItem -Path $backupPath -Force -Recurse -File -Name | Select-Object -index $counter)
-		Copy-Item $deployPath\$object -Destination $backupPath -recurse -Force
-		$counter=($counter+1) }
-	Write-Host "----------------------------------------"
-	Write-Host "$counter copied files"
-	Write-Host "----------------------------------------"}
+    	if ((Test-Path $deployPath -And Test-Path $backupPath)) {
+		Get-ChildItem -Path $backupPath -Recurse -Force -File | foreach-object {
+            $object= (Get-ChildItem -Path $backupPath -Force -Recurse -File -Name | Select-Object -index $counter)
+            Copy-Item $deployPath\$object -Destination $backupPath -recurse -Force
+            $counter=($counter+1) }
+		Write-Host "----------------------------------------"
+		Write-Host "$counter copied files"
+		Write-Host "----------------------------------------"
+   	}
+	else{
+		Write-Host = "Incorrect paths.Process canceled"
+	}
 }
-else {
+else{
 Write-Host = "Process canceled"
 }
