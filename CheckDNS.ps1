@@ -17,7 +17,7 @@ echo "----------------------------------------------" >> C:\Users\user\Desktop\P
 
 #DNS and Ping report
 foreach($name in Get-Content C:\Users\user\Desktop\PWSH\lista.txt) {
-    $dns=$name+".yoigo.com"
+    $dns=$name+".dominio.com"
 	$respuesta=(Resolve-DnsName $dns)
 	$ping=((Test-NetConnection $dns).PingSucceeded)
 	if($respuesta -ne $null){
