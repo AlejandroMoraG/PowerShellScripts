@@ -1,5 +1,5 @@
 Write-Host "*************************************" -ForegroundColor Yellow
-Write-Host "*    	     CheckDNS 			    *" -ForegroundColor Yellow
+Write-Host "*              CheckDNS             *" -ForegroundColor Yellow
 Write-Host "*************************************" -ForegroundColor Yellow
 Write-Host "*         @AlejandroMora            *" -ForegroundColor Yellow
 Write-Host "*************************************" -ForegroundColor Yellow
